@@ -1,0 +1,28 @@
+{
+  "placeholderImages": [
+    {
+      "id": "banner-1",
+      "description": "Promo Pulsa Murah",
+      "imageUrl": "https://picsum.photos/seed/ppob1/1200/400",
+      "imageHint": "mobile phone payment"
+    },
+    {
+      "id": "banner-2",
+      "description": "Promo Token PLN",
+      "imageUrl": "https://picsum.photos/seed/ppob2/1200/400",
+      "imageHint": "electricity lightbulb"
+    },
+    {
+      "id": "banner-3",
+      "description": "Top Up Game Terpercaya",
+      "imageUrl": "https://picsum.photos/seed/ppob3/1200/400",
+      "imageHint": "gaming controller"
+    },
+    {
+      "id": "qris-code",
+      "description": "QRIS Payment Code",
+      "imageUrl": "https://i.imgur.com/IvVcoBz.png",
+      "imageHint": "qris code"
+    }
+  ]
+}

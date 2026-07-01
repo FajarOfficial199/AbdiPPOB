@@ -1,0 +1,69 @@
+
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Informasi profil mitra (Reseller/Affiliate)",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["RESELLER", "AFFILIATE", "GUEST"] },
+        "points": { "type": "number", "default": 0 },
+        "referralCode": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Informasi pesanan transaksi PPOB",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "targetNumber": { "type": "string" },
+        "productCode": { "type": "string" },
+        "productName": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { 
+          "type": "string", 
+          "enum": ["pending", "sukses", "gagal"] 
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "PointRedemption": {
+      "title": "PointRedemption",
+      "description": "Permintaan penukaran poin member",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "pointsSpent": { "type": "number" },
+        "rewardType": { "type": "string", "enum": ["SALDO", "PULSA", "DATA", "E-WALLET"] },
+        "targetNumber": { "type": "string", "description": "Nomor tujuan penukaran" },
+        "provider": { "type": "string", "description": "Nama provider/e-wallet" },
+        "status": { "type": "string", "enum": ["PENDING", "SUCCESS", "REJECTED"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "auth": {
+    "providers": ["password", "google.com"]
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "#/backend/entities/User",
+      "description": "Data profil pengguna"
+    },
+    "/orders/{orderId}": {
+      "schema": "#/backend/entities/Order",
+      "description": "Koleksi transaksi"
+    },
+    "/redemptions/{redemptionId}": {
+      "schema": "#/backend/entities/PointRedemption",
+      "description": "Koleksi penukaran poin"
+    }
+  }
+}
